@@ -7,6 +7,7 @@ public class ProtoMovement : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float rotationSpeed = 90.0f;
+    [SerializeField] private ProtoAnimations protoAnimations;
 
     private Transform cameraRig;
 
@@ -14,6 +15,7 @@ public class ProtoMovement : MonoBehaviour
     {
         //Get all the references contained inside the prefab here
         characterController = GetComponent<CharacterController>();
+        protoAnimations = GetComponentInChildren<ProtoAnimations>();
     }
 
     private void Start()
@@ -28,6 +30,8 @@ public class ProtoMovement : MonoBehaviour
         Vector3 leftJoysticVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //Move character
         Vector3 movementVector = leftJoysticVector.normalized;
+
+        protoAnimations.SetMoveSpeed(movementVector.magnitude);
 
         //This makes the vector relative to the camera, since its a 3rd person controller style
         Vector3 relativeMovementVector = cameraRig.TransformVector( movementVector );
