@@ -10,4 +10,9 @@ public class ProtoAnimations : MonoBehaviour
     {
         animator.SetFloat("moveSpeed", moveSpeed);
     }
+
+    public void SetFirstPerson(bool isFirstPerson)
+    {
+        animator.SetBool("isAiming", isFirstPerson);
+    }
 }
