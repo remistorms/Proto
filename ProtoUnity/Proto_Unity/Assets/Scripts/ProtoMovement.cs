@@ -30,7 +30,7 @@ public class ProtoMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        cameraRig.GetComponent<CameraRig>().SwitchedCameraMode -= OnCameraModeSwitched;
+       // cameraRig.GetComponent<CameraRig>().SwitchedCameraMode -= OnCameraModeSwitched;
     }
 
     private void Update()

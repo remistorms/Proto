@@ -78,7 +78,7 @@ public class CameraRig : MonoBehaviour
 
     private void FirstPersonPitch()
     {
-        xFirstPersonRotation = Mathf.Clamp(xFirstPersonRotation - Input.GetAxis("R_Vertical") * pitchSpeed * Time.deltaTime, -45, 45);
+        xFirstPersonRotation = Mathf.Clamp(xFirstPersonRotation + Input.GetAxis("R_Vertical") * pitchSpeed * Time.deltaTime, -45, 45);
         firstPersonCameraParent.transform.localRotation = Quaternion.Euler(xFirstPersonRotation, firstPersonCameraParent.transform.rotation.y, firstPersonCameraParent.transform.rotation.z);
     }
 
@@ -115,7 +115,7 @@ public class CameraRig : MonoBehaviour
             case CameraMode.FirstPerson:
                 firstPersonCamera.enabled = true;
                 thirdPersonCamera.enabled = false;
-                ProtoArm.enabled = true;
+                ProtoArm.gameObject.SetActive(true);
                 ProtoMesh.enabled = false;
                 firstPersonCameraParent.transform.localRotation = Quaternion.Euler(Vector3.zero);
                 break;
@@ -123,7 +123,7 @@ public class CameraRig : MonoBehaviour
             case CameraMode.ThirdPerson:
                 firstPersonCamera.enabled = false;
                 thirdPersonCamera.enabled = true;
-                ProtoArm.enabled = false;
+                ProtoArm.gameObject.SetActive(false);
                 ProtoMesh.enabled = true;
                 firstPersonCameraParent.transform.localRotation = Quaternion.Euler(Vector3.zero);
                 break;
